@@ -7,6 +7,7 @@ else()
 endif()
 
 find_package(GTest CONFIG REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(ip_cli main.cpp)
 add_library(ip_lib ip_lib.cpp)
