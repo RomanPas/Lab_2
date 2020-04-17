@@ -1,4 +1,10 @@
 language: cpp
+before_install:
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+install: 
+  - sudo apt-get install -qq g++-7
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
 before_script:
 - sudo apt-get install libgtest-dev
 - sudo apt-get install cmake # install cmake
