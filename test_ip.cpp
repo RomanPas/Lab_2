@@ -299,7 +299,7 @@ TEST(ip, inputToVecMinMax) {
 	EXPECT_EQ(vecMaxIp, maxAnswer);
 }
 
-int main(int argc, char** argv) {
-	testing::InitGoogleTest(&argc, argv);
+int main() {
+	testing::InitGoogleTest();
 	return RUN_ALL_TESTS();
 }
