@@ -44,7 +44,7 @@ vector<uint32_t> strIpToVecIp(const string& strIp) {
 
 	for (size_t i = 0; i < 4U; ++i) {
 		result.push_back(stoi(ip[i]));
-		if (result[i] < 0U || result[i] > 255U)
+		if (result[i] > 255U)
 			return {};
 	}
 
@@ -143,7 +143,7 @@ pair<vecIt, vecIt> findRange(const vector<uint32_t>& ips, uint32_t minIp, uint32
 }
 
 void inputToVecMinMax(vector<uint32_t>& vecMinIp, vector<uint32_t>& vecMaxIp, const vector<int>& input, size_t id) {
-	if (id == 4U || input[id] < 0U || input[id] > 255U)
+	if (id == 4U || input[id] < 0 || input[id] > 255)
 		return;
 
 	vecMinIp[id] = vecMaxIp[id] = static_cast<unsigned>(input[id]);
