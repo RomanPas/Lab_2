@@ -2,9 +2,6 @@
 #include <gtest/gtest.h>
 #include <string>
 
-int my_argc;
-char** my_argv;
-
 using namespace std;
 
 TEST(ip, split) {
@@ -305,7 +302,7 @@ TEST(ip, inputToVecMinMax) {
 int main(int argc, char* argv[])
 {
 	testing::InitGoogleTest(&argc, argv);
-	my_argc = argc;
-	my_argv = argv;
+	if (!argc) { cout << ""; }
+	if (!argv) { cout << ""; }
 	return RUN_ALL_TESTS();
 }

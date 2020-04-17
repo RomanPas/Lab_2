@@ -24,23 +24,23 @@ target_link_libraries(test_ip PRIVATE ${GTEST_LIBRARIES} ${CMAKE_THREAD_LIBS_INI
 
 if(MSVC)
 	target_compile_options(ip_cli PRIVATE
-		/W4
+		/W3
 	)
 	target_compile_options(ip_lib PRIVATE
-		/W4
+		/W3
 	)
 		target_compile_options(test_ip PRIVATE
-		/W4
+		/W3
 	)
 else()
 	target_compile_options(ip_cli PRIVATE
-		-Wall -Wextra -pedantic -Werror
+		-Wall -Wextra -pedantic
 	)
 	target_compile_options(ip_lib PRIVATE
-		-Wall -Wextra -pedantic -Werror
+		-Wall -Wextra -pedantic
 	)
 		target_compile_options(test_ip PRIVATE
-		-Wall -Wextra -pedantic -Werror
+		-Wall -Wextra -pedantic
 	)
 endif()
 
