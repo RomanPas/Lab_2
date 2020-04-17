@@ -19,7 +19,7 @@ set_target_properties(ip_cli ip_lib test_ip PROPERTIES
 )
 
 target_link_libraries(ip_cli PRIVATE ip_lib)
-target_link_libraries(test_ip PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main ip_lib)
+target_link_libraries(test_ip PRIVATE ${GTEST_LIBRARIES} ip_lib)
 
 if(MSVC)
 	target_compile_options(ip_cli PRIVATE
