@@ -7,6 +7,7 @@ else()
 endif()
 
 find_package(GTest REQUIRED)
+find_package(Threads)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(ip_cli main.cpp)
@@ -19,7 +20,7 @@ set_target_properties(ip_cli ip_lib test_ip PROPERTIES
 )
 
 target_link_libraries(ip_cli PRIVATE ip_lib)
-target_link_libraries(test_ip PRIVATE ${GTEST_LIBRARIES} ip_lib)
+target_link_libraries(test_ip PRIVATE ${GTEST_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ip_lib)
 
 if(MSVC)
 	target_compile_options(ip_cli PRIVATE
