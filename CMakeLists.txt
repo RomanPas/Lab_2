@@ -6,7 +6,7 @@ else()
 	project(ip VERSION 0.0.1)
 endif()
 
-find_package(GTest CONFIG REQUIRED)
+find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(ip_cli main.cpp)
