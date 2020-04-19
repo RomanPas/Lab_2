@@ -41,3 +41,9 @@ else()
 		-Wall -Wextra -pedantic -Werror
 	)
 endif()
+
+enable_testing()
+
+add_test(test_tools test_tools)
+add_test(test_ipv4 test_ipv4)
+add_test(test_database test_database)
