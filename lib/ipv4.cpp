@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Ipv4::Ipv4(const uint32_t ip) : ip_(ip) {};
+Ipv4::Ipv4(const uint32_t ip) : ip_(ip) {}
 
 string Ipv4::toString() {
 	vector<string> vecStr;
