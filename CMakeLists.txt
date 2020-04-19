@@ -6,41 +6,31 @@ else()
 	project(ip VERSION 0.0.1)
 endif()
 
-find_package(GTest REQUIRED)
-find_package(Threads)
-include_directories(${GTEST_INCLUDE_DIRS})
+set(LIB_DIR ${CMAKE_SOURCE_DIR}/lib)
+set(TESTS_DIR ${CMAKE_SOURCE_DIR}/tests)
+
+add_subdirectory(${LIB_DIR})
+add_subdirectory(${TESTS_DIR})
+
+include_directories(${LIB_DIR})
+include_directories(${TESTS_DIR})
 
 add_executable(ip_cli main.cpp)
-add_library(ip_lib ip_lib.cpp)
-add_executable(test_ip test_ip.cpp)
 
-set_target_properties(ip_cli ip_lib test_ip PROPERTIES
+set_target_properties(ip_cli PROPERTIES
 	CXX_STANDART 14
 	CXX_STANDART_REQUIRED ON
 )
 
-target_link_libraries(ip_cli PRIVATE ip_lib)
-target_link_libraries(test_ip PRIVATE ${GTEST_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ip_lib)
+target_link_libraries(ip_cli PRIVATE tools ipv4 database)
 
 if(MSVC)
 	target_compile_options(ip_cli PRIVATE
-		/W3
-	)
-	target_compile_options(ip_lib PRIVATE
-		/W3
-	)
-		target_compile_options(test_ip PRIVATE
-		/W3
+		/W4
 	)
 else()
 	target_compile_options(ip_cli PRIVATE
-		-Wall -Wextra -pedantic
-	)
-	target_compile_options(ip_lib PRIVATE
-		-Wall -Wextra -pedantic
-	)
-		target_compile_options(test_ip PRIVATE
-		-Wall -Wextra -pedantic
+		-Wall -Wextra -pedantic -Werror
 	)
 endif()
 
@@ -58,4 +48,6 @@ include(CPack)
 
 enable_testing()
 
-add_test(test_ip test_ip)
+add_test(test_tools test_tools)
+add_test(test_ipv4 test_ipv4)
+add_test(test_database test_database)

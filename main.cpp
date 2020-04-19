@@ -1,23 +1,27 @@
-#include "ip_lib.h"
+#include "tools.h"
+#include "ipv4.h"
+#include "database.h"
 
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <string>
+#include <limits>
 
 using namespace std;
 
-int main(int argc, char const* argv[]) {
+int main() {
+	Database base;
 
-	vector<uint32_t> ips = readData();
-	sort(ips.rbegin(), ips.rend());
-
-	for (auto ip : ips) {
-		printIp(ip);
+	for (string line; cin >> line;) {
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		base.addIp(line);
 	}
 
-	filter(ips, 1);
-	filter(ips, 46, 70);
-	filterAny(ips, 46);
+	base.printAllIp();
+	base.filter(1);
+	base.filter(46, 70);
+	base.filterAny(46);
 
 	return 0;
 }
