@@ -2,6 +2,7 @@
 
 #include "ipv4.h"
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -55,5 +56,5 @@ void Database::filter(Args ... args) {
 
 	auto range = findRange(minIp, maxIp);
 	for (auto it = range.first; it != range.second; it++)
-		cout << *it << "\n";
+		std::cout << *it << "\n";
 }
