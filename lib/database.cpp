@@ -73,7 +73,7 @@ bool Database::correctIp(const vector<string>& vecStrIp) {
 		if (find_if(begin(strIp), end(strIp), [](char c) { return !isdigit(c); }) != end(strIp))
 			return false;
 
-		auto ip = stoi(strIp);
+		uint32_t ip = stoi(strIp);
 		if (ip < minStrIp || ip > maxStrIp)
 			return false;
 	}
