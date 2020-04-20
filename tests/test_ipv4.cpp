@@ -77,8 +77,3 @@ TEST(ipv4, vecIpToIpv4) {
 	answer = 4294967295;
 	EXPECT_EQ(vecIpToIpv4(vecIp), answer);
 }
-
-int main(int argc, char** argv) {
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
-}

@@ -117,8 +117,3 @@ TEST(database, correctIp) {
 	vecStrIp = { "0", "0", "0", "0" };
 	EXPECT_TRUE(database.checkCorrectIp(vecStrIp));
 }
-
-int main(int argc, char** argv) {
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
-}

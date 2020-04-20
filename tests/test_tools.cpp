@@ -38,8 +38,3 @@ TEST(tools, split) {
 	answer = { "8.8.8.8", "8", "8" };
 	EXPECT_EQ(split(line, "\t"), answer);
 }
-
-int main(int argc, char** argv) {
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
-}

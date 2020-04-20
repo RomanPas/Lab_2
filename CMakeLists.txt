@@ -45,9 +45,3 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT example@example.com)
 
 include(CPack)
-
-enable_testing()
-
-add_test(test_tools test_tools)
-add_test(test_ipv4 test_ipv4)
-add_test(test_database test_database)
