@@ -12,8 +12,7 @@ set(TESTS_DIR ${CMAKE_SOURCE_DIR}/tests)
 add_subdirectory(${LIB_DIR})
 add_subdirectory(${TESTS_DIR})
 
-include_directories(${LIB_DIR})
-include_directories(${TESTS_DIR})
+#include_directories(${LIB_DIR})
 
 add_executable(ip_cli main.cpp)
 
@@ -21,6 +20,8 @@ set_target_properties(ip_cli PROPERTIES
 	CXX_STANDART 14
 	CXX_STANDART_REQUIRED ON
 )
+
+target_include_directories(ip_cli PRIVATE ${LIB_DIR})
 
 target_link_libraries(ip_cli PRIVATE tools ipv4 database)
 

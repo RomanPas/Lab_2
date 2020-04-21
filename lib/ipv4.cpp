@@ -8,20 +8,15 @@ using namespace std;
 Ipv4::Ipv4(const uint32_t ip) : ip_(ip) {}
 
 string Ipv4::toString() {
-	vector<string> vecStr;
 	uint32_t temp = ip_;
+	string strIp = "";
 
-	for (size_t i = 0; i < 4; ++i) {
-		vecStr.push_back(to_string(temp & 0xFF));
-		temp >>= 8;
-	}
-
-	reverse(begin(vecStr), end(vecStr));
-
-	string strIp = vecStr.front();
-	for (size_t i = 1; i < vecStr.size(); ++i) {
+	strIp += to_string(temp >> 24);
+	temp <<= 8;
+	for (size_t i = 0; i < 3; ++i) {
 		strIp += ".";
-		strIp += vecStr[i];
+		strIp += to_string(temp >> 24);
+		temp <<= 8;
 	}
 
 	return strIp;
@@ -60,7 +55,7 @@ ostream& operator<< (ostream& out, Ipv4 ip) {
 	return out;
 }
 
-Ipv4 vecIpToIpv4(vector<uint32_t>& vecIp) {
+Ipv4 vecIpToIpv4(const vector<uint32_t>& vecIp) {
 	uint32_t ip = 0;
 
 	ip |= vecIp[0];

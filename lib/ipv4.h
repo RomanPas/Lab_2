@@ -22,4 +22,4 @@ private:
 };
 
 std::ostream& operator<< (std::ostream& out, Ipv4 ip);
-Ipv4 vecIpToIpv4(std::vector<uint32_t>& vecIp);
+Ipv4 vecIpToIpv4(const std::vector<uint32_t>& vecIp);
