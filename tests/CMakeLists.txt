@@ -25,3 +25,7 @@ else()
 		-Wall -Wextra -pedantic -Werror
 	)
 endif()
+
+enable_testing()
+
+add_test(all_tests all_tests)
