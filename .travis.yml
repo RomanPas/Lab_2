@@ -1,0 +1,31 @@
+language: cpp
+before_install:
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+install: 
+  - sudo apt-get install -qq g++-7
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
+before_script:
+- sudo apt-get install libgtest-dev
+- sudo apt-get install cmake # install cmake
+- cd /usr/src/gtest
+- sudo cmake CMakeLists.txt
+- sudo make
+- sudo cp *.a /usr/lib
+- sudo mkdir -p /usr/local/lib/gtest
+- sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
+- sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
+- echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
+- sudo apt-get update -qq
+- cd -
+script:
+- cmake .
+- cmake --build .
+- cmake --build . --target test
+- cmake --build . --target package
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+  - curl -v -T ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uromanpas:$BINTRAY_API_KEY "https://api.bintray.com/content/romanpas/reps/Lab_2/$TRAVIS_BUILD_NUMBER/ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.debdeb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
